@@ -5,6 +5,12 @@ namespace AppMetricsPrometheus.NetCore
 {
 	public static class ApplicationBuilderExtensions
 	{
+		public static IApplicationBuilder UseAppMetricsPrometheus(this IApplicationBuilder app)
+		{
+			app.UseAppMetricsPrometheus(new AppMetricsPrometheusSettings());
+			return app;
+		}
+
 		public static IApplicationBuilder UseAppMetricsPrometheus(this IApplicationBuilder app, AppMetricsPrometheusSettings settings)
 		{
 			var formatter = settings.Formatter ?? GetDefaultFormatter();
