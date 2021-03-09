@@ -1,21 +1,20 @@
 ﻿using System.IO;
 using System.Linq;
 using App.Metrics;
-using App.Metrics.Apdex;
 
 namespace AppMetricsPrometheus.Formatters
 {
 	public abstract class BaseFormatter
 	{
-		protected string GetMetricName(string context, string metricName)
+		protected string GetMetricName(string metricName)
 		{
-			var name = ($"{context}_{metricName}".ToLower());
+			var name = metricName.ToLower();
 			return Constants.ValidPrometheusNameCharsRegex.Replace(name, "_");
 		}
 
-		protected string GetFullMetricName(string context, string metricName, MetricTags metricTags, string? suffix = null)
+		protected string GetMetricRow(string context, string metricName, MetricTags metricTags, string? suffix = null)
 		{
-			string fullMetricName = GetMetricName(context, metricName);
+			string fullMetricName = GetMetricName(metricName);
 			if (suffix != null)
 				fullMetricName = $"{fullMetricName}_{suffix}";
 
@@ -26,13 +25,14 @@ namespace AppMetricsPrometheus.Formatters
 				.Zip(metricTags.Values, (key, value) => $"{key}=\"{value}\"");
 
 			var tagsStr = string.Join(",", tagKeyValues);
+			var contextTag = $"context=\"{context}\"";
 
-			return $"{fullMetricName}{{{tagsStr}}}".ToLower();
+			return $"{fullMetricName}{{{tagsStr},{contextTag}}}".ToLower();
 		}
 
-		protected void WriteMetricName(StreamWriter streamWriter, MetricsContextValueSource metricContext, string metricName)
+		protected void WriteMetricName(StreamWriter streamWriter, string metricName)
 		{
-			var name = GetMetricName(metricContext.Context, metricName);
+			var name = GetMetricName(metricName);
 			streamWriter.WriteLine($"# HELP {name} values");
 			streamWriter.WriteLine($"# TYPE {name} gauge");
 		}

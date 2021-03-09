@@ -14,10 +14,10 @@ namespace AppMetricsPrometheus.Formatters
 	{
 		public void Write(StreamWriter streamWriter, MetricsContextValueSource metricContext, GaugeValueSource metric)
 		{
-			WriteMetricName(streamWriter, metricContext, metric.MultidimensionalName);
+			WriteMetricName(streamWriter, metric.MultidimensionalName);
 
 			var value = metric.ValueProvider.GetValue(metric.ResetOnReporting);
-			var fullName = GetFullMetricName(metricContext.Context, metric.MultidimensionalName, metric.Tags);
+			var fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags);
 			streamWriter.WriteLine($"{fullName} {value.ToString(CultureInfo.InvariantCulture)}");
 		}
 	}
