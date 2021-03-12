@@ -8,12 +8,14 @@
 		<Company>Alkiviadis Skoutaris</Company>
 		<Description>AppMetricsPrometheus extensions and utils for .NetCore</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Version>1.0.2</Version>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/askoutaris/appmetrics-prometheus</RepositoryUrl>
+		<Version>1.0.3</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="App.Metrics.Abstractions" Version="4.1.0" />
-	  <PackageReference Include="AppMetricsPrometheus" Version="1.0.1" />
+	  <PackageReference Include="AppMetricsPrometheus" Version="1.0.2" />
 	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
 	  <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
 	</ItemGroup>

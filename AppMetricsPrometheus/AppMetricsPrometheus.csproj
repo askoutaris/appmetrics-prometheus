@@ -8,7 +8,9 @@
 		<Company>Alkiviadis Skoutaris</Company>
 		<Description>Prometheus exporter for AppMetrics</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Version>1.0.1</Version>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/askoutaris/appmetrics-prometheus</RepositoryUrl>
+		<Version>1.0.2</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
