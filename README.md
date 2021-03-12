@@ -3,7 +3,7 @@ Prometheus exporter for AppMetrics
 
 ### ASP.NET Core - Setup
 
-In order to use TemplateBinder with ASP.Net Core you have to install <a href="https://www.nuget.org/packages/TemplateBinder.Extensions.DependencyInjection/" target="_blank">TemplateBinder.Extensions.DependencyInjection</a> nuget package
+In order to use AppMetrics Prometheus exporter with ASP.Net Core you have to install <a href="https://www.nuget.org/packages/AppMetricsPrometheus.NetCore/" target="_blank">AppMetricsPrometheus.NetCore</a> nuget package
 
 ```csharp
 public void Configure(IApplicationBuilder app)
