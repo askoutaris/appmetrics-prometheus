@@ -6,16 +6,13 @@ namespace AppMetricsPrometheus.NetCore
 	public static class ApplicationBuilderExtensions
 	{
 		public static IApplicationBuilder UseAppMetricsPrometheus(this IApplicationBuilder app)
-		{
-			app.UseAppMetricsPrometheus(new AppMetricsPrometheusSettings());
-			return app;
-		}
+			=> app.UseAppMetricsPrometheus(new AppMetricsPrometheusSettings());
 
 		public static IApplicationBuilder UseAppMetricsPrometheus(this IApplicationBuilder app, AppMetricsPrometheusSettings settings)
 		{
 			var formatter = settings.Formatter ?? GetDefaultFormatter();
-			app.UseMiddleware<AppMetricsPrometheusMiddleware>(settings, formatter);
-			return app;
+
+			return app.UseMiddleware<AppMetricsPrometheusMiddleware>(settings, formatter);
 		}
 
 		private static IPrometheusFormatter GetDefaultFormatter()

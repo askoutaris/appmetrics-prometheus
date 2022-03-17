@@ -10,11 +10,11 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/askoutaris/appmetrics-prometheus</RepositoryUrl>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="App.Metrics.Abstractions" Version="4.1.0" />
+		<PackageReference Include="App.Metrics.Abstractions" Version="4.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
