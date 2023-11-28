@@ -34,6 +34,16 @@ namespace AppMetricsPrometheus.Formatters
 			streamWriter.WriteLine($"{fullName} {value.StdDev.ToString(CultureInfo.InvariantCulture)}");
 			fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags, nameof(value.Sum));
 			streamWriter.WriteLine($"{fullName} {value.Sum.ToString(CultureInfo.InvariantCulture)}");
+			fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags, nameof(value.Percentile75));
+			streamWriter.WriteLine($"{fullName} {value.Percentile75.ToString(CultureInfo.InvariantCulture)}");
+			fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags, nameof(value.Percentile95));
+			streamWriter.WriteLine($"{fullName} {value.Percentile95.ToString(CultureInfo.InvariantCulture)}");
+			fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags, nameof(value.Percentile98));
+			streamWriter.WriteLine($"{fullName} {value.Percentile98.ToString(CultureInfo.InvariantCulture)}");
+			fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags, nameof(value.Percentile99));
+			streamWriter.WriteLine($"{fullName} {value.Percentile99.ToString(CultureInfo.InvariantCulture)}");
+			fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags, nameof(value.Percentile999));
+			streamWriter.WriteLine($"{fullName} {value.Percentile999.ToString(CultureInfo.InvariantCulture)}");
 		}
 	}
 }
