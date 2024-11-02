@@ -20,5 +20,12 @@ namespace AppMetricsPrometheus.Formatters
 			var fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags);
 			streamWriter.WriteLine($"{fullName} {value.Count.ToString(CultureInfo.InvariantCulture)}");
 		}
+
+		protected override void WriteMetricName(StreamWriter streamWriter, string metricName)
+		{
+			var name = GetMetricName(metricName);
+			streamWriter.WriteLine($"# HELP {name} values");
+			streamWriter.WriteLine($"# TYPE {name} counter");
+		}
 	}
 }

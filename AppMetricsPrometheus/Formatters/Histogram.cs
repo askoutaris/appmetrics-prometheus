@@ -45,5 +45,12 @@ namespace AppMetricsPrometheus.Formatters
 			fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags, nameof(value.Percentile999));
 			streamWriter.WriteLine($"{fullName} {value.Percentile999.ToString(CultureInfo.InvariantCulture)}");
 		}
+
+		protected override void WriteMetricName(StreamWriter streamWriter, string metricName)
+		{
+			var name = GetMetricName(metricName);
+			streamWriter.WriteLine($"# HELP {name} values");
+			streamWriter.WriteLine($"# TYPE {name} histogram");
+		}
 	}
 }
