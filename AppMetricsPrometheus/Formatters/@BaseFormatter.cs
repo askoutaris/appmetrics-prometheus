@@ -34,7 +34,9 @@ namespace AppMetricsPrometheus.Formatters
 		{
 			var name = GetMetricName(metricName);
 			streamWriter.WriteLine($"# HELP {name} values");
-			streamWriter.WriteLine($"# TYPE {name} gauge");
+			streamWriter.WriteLine($"# TYPE {name} {GetMetricType()}");
 		}
+
+		protected abstract string GetMetricType();
 	}
 }

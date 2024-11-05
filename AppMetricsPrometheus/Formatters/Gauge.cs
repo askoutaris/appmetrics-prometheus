@@ -20,5 +20,7 @@ namespace AppMetricsPrometheus.Formatters
 			var fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags);
 			streamWriter.WriteLine($"{fullName} {value.ToString(CultureInfo.InvariantCulture)}");
 		}
+
+		protected override string GetMetricType() => "gauge";
 	}
 }

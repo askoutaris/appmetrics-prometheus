@@ -29,5 +29,7 @@ namespace AppMetricsPrometheus.Formatters
 			fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags, nameof(value.Tolerating));
 			streamWriter.WriteLine($"{fullName} {value.Tolerating.ToString(CultureInfo.InvariantCulture)}");
 		}
+
+		protected override string GetMetricType() => "untyped";
 	}
 }

@@ -36,5 +36,7 @@ namespace AppMetricsPrometheus.Formatters
 			fullName = GetMetricRow(metricContext.Context, metric.MultidimensionalName, metric.Tags, nameof(value.Sum));
 			streamWriter.WriteLine($"{fullName} {value.Sum.ToString(CultureInfo.InvariantCulture)}");
 		}
+
+		protected override string GetMetricType() => "untyped";
 	}
 }
