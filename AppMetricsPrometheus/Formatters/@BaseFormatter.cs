@@ -30,6 +30,13 @@ namespace AppMetricsPrometheus.Formatters
 			return $"{fullMetricName}{{{tagsStr},{contextTag}}}".ToLower();
 		}
 
-		protected abstract void WriteMetricName(StreamWriter streamWriter, string metricName);
+		protected void WriteMetricName(StreamWriter streamWriter, string metricName)
+		{
+			var name = GetMetricName(metricName);
+			streamWriter.WriteLine($"# HELP {name} values");
+			streamWriter.WriteLine($"# TYPE {name} {GetMetricType()}");
+		}
+
+		protected abstract string GetMetricType();
 	}
 }

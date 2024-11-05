@@ -46,11 +46,6 @@ namespace AppMetricsPrometheus.Formatters
 			streamWriter.WriteLine($"{fullName} {value.Percentile999.ToString(CultureInfo.InvariantCulture)}");
 		}
 
-		protected override void WriteMetricName(StreamWriter streamWriter, string metricName)
-		{
-			var name = GetMetricName(metricName);
-			streamWriter.WriteLine($"# HELP {name} values");
-			streamWriter.WriteLine($"# TYPE {name} histogram");
-		}
+		protected override string GetMetricType() => "histogram";
 	}
 }

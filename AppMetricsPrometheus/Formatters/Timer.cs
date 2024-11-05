@@ -37,11 +37,6 @@ namespace AppMetricsPrometheus.Formatters
 			streamWriter.WriteLine($"{fullName} {value.Sum.ToString(CultureInfo.InvariantCulture)}");
 		}
 
-		protected override void WriteMetricName(StreamWriter streamWriter, string metricName)
-		{
-			var name = GetMetricName(metricName);
-			streamWriter.WriteLine($"# HELP {name} values");
-			streamWriter.WriteLine($"# TYPE {name} untyped");
-		}
+		protected override string GetMetricType() => "counter";
 	}
 }
